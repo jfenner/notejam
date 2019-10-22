@@ -9,7 +9,7 @@ var db = require('../db');
 var config = require('./config')
 var app = require('../app');
 
-app.listen(config.port);
+var server = app.listen(config.port);
 
 before(function(done) {
   db.createTables(function() {
@@ -19,6 +19,7 @@ before(function(done) {
 
 describe('Note', function() {
 
+
   var agent = request.agent();
   before(
     config.signInUser(
@@ -26,7 +27,13 @@ describe('Note', function() {
     )
   );
 
-  describe('can be', function() {
+    after(function (done) {
+        server.close();
+        done();
+    });
+
+
+    describe('can be', function() {
     it('successfully created', function(done) {
       agent
         .post(config.url('/notes/create'))

@@ -9,7 +9,7 @@ var db = require('../db');
 var config = require('./config');
 var app = require('../app');
 
-app.listen(config.port);
+var server = app.listen(config.port);
 
 before(function(done) {
   db.createTables(function() {
@@ -19,7 +19,12 @@ before(function(done) {
 
 describe('User', function(){
 
-  it('can successfully sign in', function(done){
+    after(function (done) {
+        server.close();
+        done();
+    });
+
+    it('can successfully sign in', function(done){
     var agent = request.agent();
     agent
     .post(config.url('/signin'))
