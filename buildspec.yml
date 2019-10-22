@@ -15,7 +15,8 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code
-      - ./node_modules/mocha/bin/mocha tests
+      - pwd
+      - mocha tests
   post_build:
     commands:
       - echo Build completed on `date`
