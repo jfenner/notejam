@@ -10,6 +10,7 @@ phases:
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
+      - cd express/notejam
       - npm install
   build:
     commands:
