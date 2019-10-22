@@ -15,7 +15,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code
-      - pwd
+      - ls -l
       - mocha tests
   post_build:
     commands:
