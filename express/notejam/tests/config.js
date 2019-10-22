@@ -1,6 +1,6 @@
 module.exports = {
   host: 'http://localhost',
-  port: 3000,
+  port: 3001,
 
   // build absolute url
   url: function(url) {
